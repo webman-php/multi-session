@@ -4,7 +4,8 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "workerman/workerman": "^4.0.36"
+    "workerman/workerman": "^4.0.36",
+    "workerman/webman-framework": "^1.3.12"
   },
   "autoload": {
     "psr-4": {
