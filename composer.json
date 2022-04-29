@@ -1,0 +1,14 @@
+{
+  "name": "webman/multi-session",
+  "description": "Multi session plugin for webman",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "workerman/workerman": "^4.0.36"
+  },
+  "autoload": {
+    "psr-4": {
+      "Webman\\MultiSession\\": "src"
+    }
+  }
+}
