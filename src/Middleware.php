@@ -13,6 +13,11 @@ class Middleware implements MiddlewareInterface
     public function process(Request $request, callable $next) : Response
     {
         $configs = config('plugin.webman.multi-session.session');
+        if (isset($config['/'])) {
+            $tmp = $config['/'];
+            unset($config['/']);
+            $config['/'] = $tmp;
+        }
         $path = $request->path();
         $default = $config = config('session');
         foreach ($configs as $path_prefix => $item) {
@@ -42,7 +47,7 @@ class Middleware implements MiddlewareInterface
         }
         Session::$name = $session_name;
         foreach ($map as $key => $name) {
-            if (property_exists(Session::class, $name)) {
+            if (property_exists(Session::class, $name) && (isset($config[$key]) || isset($default[$key]))) {
                 Session::${$name} = $config[$key] ?? $default[$key];
             }
         }
